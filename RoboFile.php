@@ -15,7 +15,6 @@
  *
  * @see         http://robo.li/
  */
-require_once __DIR__ . '/tests/codeception/vendor/autoload.php';
 
 if (!defined('JPATH_BASE'))
 {
@@ -31,9 +30,6 @@ if (!defined('JPATH_BASE'))
  */
 class RoboFile extends \Robo\Tasks
 {
-	// Load tasks from composer, see composer.json
-	use \Joomla\Jorobo\Tasks\loadTasks;
-
 	/**
 	 * Path to the codeception tests folder
 	 *
@@ -63,6 +59,9 @@ class RoboFile extends \Robo\Tasks
 	 * @since  3.7.3
 	 */
 	protected $cmsPath = null;
+
+	use \Robo\Task\Composer;
+	use \Robo\Task\Git;
 
 	/**
 	 * RoboFile constructor.
@@ -132,6 +131,56 @@ class RoboFile extends \Robo\Tasks
 		return $this->configuration->cmsPath;
 	}
 
+	protected function initTests()
+	{
+		$currentDir = getcwd();
+
+		if (!file_exists('tests/unit'))
+		{
+			// Submodule is not loaded
+			passthru("git submodule update");
+		}
+
+		if (!file_exists('tests/unit/vendor/bin/phpunit'))
+		{
+			// Unit tests are not initialised
+			chdir('tests/unit');
+			$this->taskComposerInstall()->run();
+			chdir($currentDir);
+		}
+
+		if (!file_exists('tests/integration'))
+		{
+			// Submodule is not loaded
+			passthru("git submodule update");
+		}
+
+		if (!file_exists('tests/integration/vendor/bin/phpunit'))
+		{
+			// Unit tests are not initialised
+			chdir('tests/integration');
+			$this->taskComposerInstall()->run();
+			chdir($currentDir);
+		}
+	}
+
+	public function testUnit()
+	{
+		$this->initTests();
+		passthru("tests/unit/vendor/bin/phpunit");
+	}
+
+	public function testIntegration()
+	{
+		$this->initTests();
+		passthru("tests/integration/vendor/bin/phpunit");
+	}
+
+	public function test()
+	{
+		$this->testUnit();
+		$this->testIntegration();
+	}
 	/**
 	 * Creates a testing Joomla site for running the tests (use it before run:test)
 	 *

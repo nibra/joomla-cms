@@ -1,0 +1,6 @@
+[submodule "tests/unit"]
+	path = tests/unit
+	url = https://github.com/joomla/test-unit.git
+[submodule "tests/integration"]
+	path = tests/integration
+	url = https://github.com/joomla/test-integration.git

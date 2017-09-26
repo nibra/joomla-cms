@@ -7,5 +7,6 @@ $baseDir = dirname(dirname($vendorDir));
 
 return array(
     'SimplePie' => array($vendorDir . '/simplepie/simplepie/library'),
+    'Lurker' => array($vendorDir . '/henrikbjorn/lurker/src'),
     'Joomla\\Session' => array($vendorDir . '/joomla/session'),
 );
