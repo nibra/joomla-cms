@@ -48,13 +48,5 @@
         "symfony/polyfill-php56": "~1.0",
         "symfony/yaml": "2.*",
         "simplepie/simplepie": "1.3.1"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^4.8.35",
-        "phpunit/dbunit": "~1.3",
-        "friendsofphp/php-cs-fixer": "~1.11",
-        "squizlabs/php_codesniffer": "~1.5",
-        "pear/cache_lite": "1.7.16",
-        "joomla/test-unit": "@dev"
     }
 }
