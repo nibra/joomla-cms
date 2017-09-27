@@ -9,4 +9,5 @@ return array(
     'SimplePie' => array($vendorDir . '/simplepie/simplepie/library'),
     'Lurker' => array($vendorDir . '/henrikbjorn/lurker/src'),
     'Joomla\\Session' => array($vendorDir . '/joomla/session'),
+    'Dflydev\\DotAccessData' => array($vendorDir . '/dflydev/dot-access-data/src'),
 );

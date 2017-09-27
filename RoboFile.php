@@ -60,9 +60,6 @@ class RoboFile extends \Robo\Tasks
 	 */
 	protected $cmsPath = null;
 
-	use \Robo\Task\Composer;
-	use \Robo\Task\Git;
-
 	/**
 	 * RoboFile constructor.
 	 *
@@ -157,30 +154,64 @@ class RoboFile extends \Robo\Tasks
 
 		if (!file_exists('tests/integration/vendor/bin/phpunit'))
 		{
-			// Unit tests are not initialised
+			// Integration tests are not initialised
 			chdir('tests/integration');
 			$this->taskComposerInstall()->run();
 			chdir($currentDir);
 		}
 	}
 
-	public function testUnit()
+	/**
+	 * Run the unit tests
+	 *
+	 * @param array $options
+	 * @option $config Specify the configuration file (phpunit.xml)
+	 */
+	public function testUnit($options = [
+		'config' => ''
+	])
 	{
 		$this->initTests();
-		passthru("tests/unit/vendor/bin/phpunit");
+
+		$config = empty($options['config']) ? '' : " -c {$options['config']}";
+
+		passthru("tests/unit/vendor/bin/phpunit{$config}");
 	}
 
-	public function testIntegration()
+	/**
+	 * Run the integration tests
+	 *
+	 * @param array $options
+	 * @option $config Specify the configuration file (phpunit.xml)
+	 */
+	public function testIntegration($options = [
+		'config' => ''
+	])
 	{
 		$this->initTests();
-		passthru("tests/integration/vendor/bin/phpunit");
+
+		$config = empty($options['config']) ? '' : " -c {$options['config']}";
+
+		passthru("tests/integration/vendor/bin/phpunit{$config}");
 	}
 
-	public function test()
+	/**
+	 * Run all tests
+	 *
+	 * This command runs both the unit and the integration tests
+	 * using the same configuration file.
+	 *
+	 * @param array $options
+	 * @option config Specify the configuration file (phpunit.xml)
+	 */
+	public function testAll($options = [
+		'config' => ''
+	])
 	{
-		$this->testUnit();
-		$this->testIntegration();
+		$this->testUnit($options);
+		$this->testIntegration($options);
 	}
+
 	/**
 	 * Creates a testing Joomla site for running the tests (use it before run:test)
 	 *
