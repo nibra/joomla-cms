@@ -5,13 +5,6 @@ local volumes = [
     },
 ];
 
-local hostvolumes = [
-    {
-        name: "composer-cache",
-        host: {path: "/tmp/composer-cache"}
-    },
-];
-
 local composer(phpversion) = {
     name: "composer",
     image: "joomlaprojects/docker-images:php" + phpversion,
@@ -41,7 +34,7 @@ local phpunit(phpversion, ignore_result) = {
 local pipeline(phpversion, ignore_result) = {
     kind: "pipeline",
     name: "PHP " + phpversion,
-    volumes: hostvolumes,
+    volumes: volumes,
     steps: [
         composer(phpversion),
 		prepare(phpversion),
@@ -83,7 +76,7 @@ local pipeline(phpversion, ignore_result) = {
     {
         kind: "pipeline",
         name: "Codequality",
-        volumes: hostvolumes,
+        volumes: volumes,
         steps: [
             {
                 name: "composer",

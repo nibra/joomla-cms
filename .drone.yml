@@ -11,8 +11,6 @@ steps:
   image: joomlaprojects/docker-images:php7.4
   commands:
   - php -v
-  - git config --global url."git://".insteadOf https://
-  - git config --global url."ssh://".insteadOf https://
   - composer install
   - composer require phpmd/phpmd
   volumes:
@@ -41,8 +39,6 @@ steps:
 
 volumes:
 - name: composer-cache
-  host:
-    path: /tmp/composer-cache
 
 ---
 kind: pipeline
@@ -103,8 +99,6 @@ services:
 
 volumes:
 - name: composer-cache
-  host:
-    path: /tmp/composer-cache
 
 ---
 kind: pipeline
@@ -165,8 +159,6 @@ services:
 
 volumes:
 - name: composer-cache
-  host:
-    path: /tmp/composer-cache
 
 ---
 kind: pipeline
@@ -227,8 +219,6 @@ services:
 
 volumes:
 - name: composer-cache
-  host:
-    path: /tmp/composer-cache
 
 ---
 kind: pipeline
@@ -289,8 +279,6 @@ services:
 
 volumes:
 - name: composer-cache
-  host:
-    path: /tmp/composer-cache
 
 ---
 kind: pipeline
@@ -351,8 +339,6 @@ services:
 
 volumes:
 - name: composer-cache
-  host:
-    path: /tmp/composer-cache
 
 ---
 kind: pipeline
@@ -413,8 +399,6 @@ services:
 
 volumes:
 - name: composer-cache
-  host:
-    path: /tmp/composer-cache
 
 ---
 kind: pipeline
@@ -475,8 +459,6 @@ services:
 
 volumes:
 - name: composer-cache
-  host:
-    path: /tmp/composer-cache
 
 ---
 kind: pipeline
@@ -537,8 +519,6 @@ services:
 
 volumes:
 - name: composer-cache
-  host:
-    path: /tmp/composer-cache
 
 ---
 kind: pipeline
@@ -599,8 +579,6 @@ services:
 
 volumes:
 - name: composer-cache
-  host:
-    path: /tmp/composer-cache
 
 ---
 kind: pipeline
@@ -662,8 +640,6 @@ services:
 
 volumes:
 - name: composer-cache
-  host:
-    path: /tmp/composer-cache
 
 ---
 kind: pipeline
@@ -724,6 +700,6 @@ steps:
 
 ---
 kind: signature
-hmac: cbef4bc42fe32344786211da2373cc3f6899ed9d40c31678f93fe24dce99a0d6
+hmac: 967f938321ecfa93dfeded6da9e3e469faa257e08fca2e77536f9ef1f6407b02
 
 ...
