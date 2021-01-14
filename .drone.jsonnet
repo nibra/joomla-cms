@@ -9,7 +9,10 @@ local composer(phpversion) = {
     name: "composer",
     image: "joomlaprojects/docker-images:php" + phpversion,
     volumes: volumes,
-    commands: ["php -v", "composer install"]
+    commands: [
+        "php -v",
+        "composer update --no-progress --no-suggest"
+    ]
 };
 
 local prepare(phpversion) = {
