@@ -11,7 +11,8 @@ local composer(phpversion) = {
     volumes: volumes,
     commands: [
         "php -v",
-        "composer update --no-progress --no-suggest"
+        "composer self-update --2",
+        "composer install --no-progress --no-suggest"
     ]
 };
 

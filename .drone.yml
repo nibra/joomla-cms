@@ -53,7 +53,8 @@ steps:
   image: joomlaprojects/docker-images:php5.3
   commands:
   - php -v
-  - composer update --no-progress --no-suggest
+  - composer self-update --2
+  - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
     path: /tmp/composer-cache
@@ -113,7 +114,8 @@ steps:
   image: joomlaprojects/docker-images:php5.4
   commands:
   - php -v
-  - composer update --no-progress --no-suggest
+  - composer self-update --2
+  - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
     path: /tmp/composer-cache
@@ -173,7 +175,8 @@ steps:
   image: joomlaprojects/docker-images:php5.5
   commands:
   - php -v
-  - composer update --no-progress --no-suggest
+  - composer self-update --2
+  - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
     path: /tmp/composer-cache
@@ -233,7 +236,8 @@ steps:
   image: joomlaprojects/docker-images:php5.6
   commands:
   - php -v
-  - composer update --no-progress --no-suggest
+  - composer self-update --2
+  - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
     path: /tmp/composer-cache
@@ -293,7 +297,8 @@ steps:
   image: joomlaprojects/docker-images:php7.0
   commands:
   - php -v
-  - composer update --no-progress --no-suggest
+  - composer self-update --2
+  - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
     path: /tmp/composer-cache
@@ -353,7 +358,8 @@ steps:
   image: joomlaprojects/docker-images:php7.1
   commands:
   - php -v
-  - composer update --no-progress --no-suggest
+  - composer self-update --2
+  - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
     path: /tmp/composer-cache
@@ -413,7 +419,8 @@ steps:
   image: joomlaprojects/docker-images:php7.2
   commands:
   - php -v
-  - composer update --no-progress --no-suggest
+  - composer self-update --2
+  - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
     path: /tmp/composer-cache
@@ -473,7 +480,8 @@ steps:
   image: joomlaprojects/docker-images:php7.3
   commands:
   - php -v
-  - composer update --no-progress --no-suggest
+  - composer self-update --2
+  - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
     path: /tmp/composer-cache
@@ -533,7 +541,8 @@ steps:
   image: joomlaprojects/docker-images:php7.4
   commands:
   - php -v
-  - composer update --no-progress --no-suggest
+  - composer self-update --2
+  - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
     path: /tmp/composer-cache
@@ -593,7 +602,8 @@ steps:
   image: joomlaprojects/docker-images:php8.0
   commands:
   - php -v
-  - composer update --no-progress --no-suggest
+  - composer self-update --2
+  - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
     path: /tmp/composer-cache
@@ -700,6 +710,6 @@ steps:
 
 ---
 kind: signature
-hmac: b31b93fe8685aae678c9d061c7dd90525c48203bcfdd44278b90e6f594187f02
+hmac: 00510b40cec8ba75c8047ceabcce7c3e654b8ee0cfc5636241392581ab3bb5d0
 
 ...
