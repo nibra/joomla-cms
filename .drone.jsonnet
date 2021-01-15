@@ -11,7 +11,7 @@ local composer(phpversion) = {
     volumes: volumes,
     commands: [
         "php -v",
-        "composer self-update --2",
+        "composer --version",
         "composer install --no-progress --no-suggest"
     ]
 };
@@ -32,7 +32,11 @@ local phpunit(phpversion, ignore_result) = {
     name: "PHPUnit",
     image: "joomlaprojects/docker-images:php" + phpversion,
 	[if ignore_result then "failure"]: "ignore",
-    commands: ["libraries/vendor/bin/phpunit"]
+    commands: [
+		"php -v",
+        "libraries/vendor/bin/phpunit --version",
+        "libraries/vendor/bin/phpunit"
+    ]
 };
 
 local pipeline(phpversion, ignore_result) = {
@@ -88,7 +92,8 @@ local pipeline(phpversion, ignore_result) = {
                 volumes: volumes,
                 commands: [
                     "php -v",
-                    "composer install",
+                    "composer --version",
+                    "composer install --no-progress --no-suggest",
                     "composer require phpmd/phpmd"
                 ]
             },
@@ -97,6 +102,7 @@ local pipeline(phpversion, ignore_result) = {
 				image: "joomlaprojects/docker-images:php7.2",
 				commands: [
 					"php -v",
+					"libraries/vendor/bin/phpcs --version",
 					"libraries/vendor/bin/phpcs --report=full --encoding=utf-8 --extensions=php -p --standard=build/phpcs/Joomla ."
 				]
 			},

@@ -11,7 +11,8 @@ steps:
   image: joomlaprojects/docker-images:php7.4
   commands:
   - php -v
-  - composer install
+  - composer --version
+  - composer install --no-progress --no-suggest
   - composer require phpmd/phpmd
   volumes:
   - name: composer-cache
@@ -21,6 +22,7 @@ steps:
   image: joomlaprojects/docker-images:php7.2
   commands:
   - php -v
+  - libraries/vendor/bin/phpcs --version
   - libraries/vendor/bin/phpcs --report=full --encoding=utf-8 --extensions=php -p --standard=build/phpcs/Joomla .
 
 - name: javascript
@@ -53,7 +55,7 @@ steps:
   image: joomlaprojects/docker-images:php5.3
   commands:
   - php -v
-  - composer self-update --2
+  - composer --version
   - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
@@ -72,6 +74,8 @@ steps:
 - name: PHPUnit
   image: joomlaprojects/docker-images:php5.3
   commands:
+  - php -v
+  - libraries/vendor/bin/phpunit --version
   - libraries/vendor/bin/phpunit
 
 services:
@@ -114,7 +118,7 @@ steps:
   image: joomlaprojects/docker-images:php5.4
   commands:
   - php -v
-  - composer self-update --2
+  - composer --version
   - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
@@ -133,6 +137,8 @@ steps:
 - name: PHPUnit
   image: joomlaprojects/docker-images:php5.4
   commands:
+  - php -v
+  - libraries/vendor/bin/phpunit --version
   - libraries/vendor/bin/phpunit
 
 services:
@@ -175,7 +181,7 @@ steps:
   image: joomlaprojects/docker-images:php5.5
   commands:
   - php -v
-  - composer self-update --2
+  - composer --version
   - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
@@ -194,6 +200,8 @@ steps:
 - name: PHPUnit
   image: joomlaprojects/docker-images:php5.5
   commands:
+  - php -v
+  - libraries/vendor/bin/phpunit --version
   - libraries/vendor/bin/phpunit
 
 services:
@@ -236,7 +244,7 @@ steps:
   image: joomlaprojects/docker-images:php5.6
   commands:
   - php -v
-  - composer self-update --2
+  - composer --version
   - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
@@ -255,6 +263,8 @@ steps:
 - name: PHPUnit
   image: joomlaprojects/docker-images:php5.6
   commands:
+  - php -v
+  - libraries/vendor/bin/phpunit --version
   - libraries/vendor/bin/phpunit
 
 services:
@@ -297,7 +307,7 @@ steps:
   image: joomlaprojects/docker-images:php7.0
   commands:
   - php -v
-  - composer self-update --2
+  - composer --version
   - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
@@ -316,6 +326,8 @@ steps:
 - name: PHPUnit
   image: joomlaprojects/docker-images:php7.0
   commands:
+  - php -v
+  - libraries/vendor/bin/phpunit --version
   - libraries/vendor/bin/phpunit
 
 services:
@@ -358,7 +370,7 @@ steps:
   image: joomlaprojects/docker-images:php7.1
   commands:
   - php -v
-  - composer self-update --2
+  - composer --version
   - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
@@ -377,6 +389,8 @@ steps:
 - name: PHPUnit
   image: joomlaprojects/docker-images:php7.1
   commands:
+  - php -v
+  - libraries/vendor/bin/phpunit --version
   - libraries/vendor/bin/phpunit
 
 services:
@@ -419,7 +433,7 @@ steps:
   image: joomlaprojects/docker-images:php7.2
   commands:
   - php -v
-  - composer self-update --2
+  - composer --version
   - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
@@ -438,6 +452,8 @@ steps:
 - name: PHPUnit
   image: joomlaprojects/docker-images:php7.2
   commands:
+  - php -v
+  - libraries/vendor/bin/phpunit --version
   - libraries/vendor/bin/phpunit
 
 services:
@@ -480,7 +496,7 @@ steps:
   image: joomlaprojects/docker-images:php7.3
   commands:
   - php -v
-  - composer self-update --2
+  - composer --version
   - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
@@ -499,6 +515,8 @@ steps:
 - name: PHPUnit
   image: joomlaprojects/docker-images:php7.3
   commands:
+  - php -v
+  - libraries/vendor/bin/phpunit --version
   - libraries/vendor/bin/phpunit
 
 services:
@@ -541,7 +559,7 @@ steps:
   image: joomlaprojects/docker-images:php7.4
   commands:
   - php -v
-  - composer self-update --2
+  - composer --version
   - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
@@ -560,6 +578,8 @@ steps:
 - name: PHPUnit
   image: joomlaprojects/docker-images:php7.4
   commands:
+  - php -v
+  - libraries/vendor/bin/phpunit --version
   - libraries/vendor/bin/phpunit
 
 services:
@@ -602,7 +622,7 @@ steps:
   image: joomlaprojects/docker-images:php8.0
   commands:
   - php -v
-  - composer self-update --2
+  - composer --version
   - composer install --no-progress --no-suggest
   volumes:
   - name: composer-cache
@@ -621,6 +641,8 @@ steps:
 - name: PHPUnit
   image: joomlaprojects/docker-images:php8.0
   commands:
+  - php -v
+  - libraries/vendor/bin/phpunit --version
   - libraries/vendor/bin/phpunit
   failure: ignore
 
@@ -710,6 +732,6 @@ steps:
 
 ---
 kind: signature
-hmac: 00510b40cec8ba75c8047ceabcce7c3e654b8ee0cfc5636241392581ab3bb5d0
+hmac: 1fe7a438017487d69b0c15d4ece27d77fd4b72a0482d579299e9dbf401b150b5
 
 ...
